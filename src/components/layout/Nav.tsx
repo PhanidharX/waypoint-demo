@@ -32,6 +32,8 @@ const teams = [
   { id: 'data-platform', label: 'Data Platform', short: 'DP' },
 ];
 
+const otherTeamUrl = process.env.NEXT_PUBLIC_OTHER_TEAM_URL || null;
+
 interface NavProps {
   teamName: string;
   onToggleTheme: () => void;
@@ -145,20 +147,16 @@ export default function Nav({ teamName, onToggleTheme, isDark }: NavProps) {
                     fontSize: 13,
                     color: team.id === currentTeamId ? 'var(--color-accent-text)' : 'var(--color-text)',
                     borderRadius: 6,
-                    cursor: team.id === currentTeamId ? 'default' : 'pointer',
+                    cursor: team.id === currentTeamId ? 'default' : otherTeamUrl ? 'pointer' : 'default',
+                    opacity: team.id !== currentTeamId && !otherTeamUrl ? 0.5 : 1,
                     background: team.id === currentTeamId ? 'var(--color-accent-dim)' : 'transparent',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                   }}
                   onClick={() => {
-                    if (team.id !== currentTeamId) {
-                      // For the demo, show instructions since team switching requires env var + rebuild
-                      alert(
-                        `To view the ${team.label} site:\n\n` +
-                        `Local dev:\n  NEXT_PUBLIC_TEAM=${team.id === 'pe' ? '' : team.id} npm run dev\n\n` +
-                        `The demo deploys each team as a separate Vercel project.`
-                      );
+                    if (team.id !== currentTeamId && otherTeamUrl) {
+                      window.location.href = otherTeamUrl;
                     }
                     setSwitcherOpen(false);
                   }}
