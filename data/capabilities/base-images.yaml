@@ -1,0 +1,164 @@
+# Extended detail for Base Images
+sections:
+  - title: "Image Strategy"
+    content: "Meridian Corp maintains a curated set of base images for all containerized workloads. Images are built weekly from upstream sources, scanned with Trivy, and published to private ECR registries. Teams consume these images via golden path Dockerfiles — no direct pulls from Docker Hub or public registries in production."
+  - title: "CVE Policy"
+    content: "Critical CVEs trigger an emergency rebuild within 24 hours. High CVEs are patched in the next weekly build. Medium and low CVEs are tracked and addressed in monthly maintenance windows. The goal is zero critical CVEs across all production images at all times."
+  - title: "Migration Support"
+    content: "When a new major version is released (e.g., Java 21 → Java 25), PE provides migration guides, updated golden path templates, and a 90-day transition window. The old version enters 'sunset' status with security-only patches."
+
+images:
+  - name: java21-build
+    display_name: "Java 21 Build"
+    architectures: [amd64, arm64]
+    phase: build
+    current_tag: "21.0.3-gradle8.7"
+    latest_available: "21.0.4-gradle8.8"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: full
+    lifecycle:
+      upgrade_status: scheduled
+      compliance_drivers:
+        - type: security
+          deadline: "2026-05-01"
+          notes: "Gradle 8.8 patches dependency resolution CVE"
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/java21-build"
+  - name: java21-runtime
+    display_name: "Java 21 Runtime"
+    architectures: [amd64, arm64]
+    phase: runtime
+    current_tag: "21.0.3-alpine"
+    latest_available: "21.0.4-alpine"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: full
+    lifecycle:
+      upgrade_status: scheduled
+      compliance_drivers:
+        - type: security
+          deadline: "2026-05-01"
+          notes: "Alpine 3.19.2 security patches"
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/java21-runtime"
+  - name: node20-build
+    display_name: "Node 20 Build"
+    architectures: [amd64, arm64]
+    phase: build
+    current_tag: "20.12.2-npm10"
+    latest_available: "20.12.2-npm10"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: full
+    lifecycle:
+      upgrade_status: current
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/node20-build"
+  - name: node20-runtime
+    display_name: "Node 20 Runtime"
+    architectures: [amd64, arm64]
+    phase: runtime
+    current_tag: "20.12.2-alpine"
+    latest_available: "20.12.2-alpine"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: full
+    lifecycle:
+      upgrade_status: current
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/node20-runtime"
+  - name: python311-build
+    display_name: "Python 3.11 Build"
+    architectures: [amd64]
+    phase: build
+    current_tag: "3.11.8-pip24"
+    latest_available: "3.11.9-pip24"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: full
+    lifecycle:
+      upgrade_status: scheduled
+      compliance_drivers:
+        - type: feature
+          deadline: "2026-06-01"
+          notes: "pip 24.1 improves dependency resolution"
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/python311-build"
+  - name: python311-runtime
+    display_name: "Python 3.11 Runtime"
+    architectures: [amd64]
+    phase: runtime
+    current_tag: "3.11.8-slim"
+    latest_available: "3.11.9-slim"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: full
+    lifecycle:
+      upgrade_status: scheduled
+      compliance_drivers:
+        - type: security
+          deadline: "2026-06-01"
+          notes: "Patches CVE-2026-1234"
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/python311-runtime"
+  - name: golang122-build
+    display_name: "Go 1.22 Build"
+    architectures: [amd64, arm64]
+    phase: build
+    current_tag: "1.22.2"
+    latest_available: "1.22.3"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: full
+    lifecycle:
+      upgrade_status: scheduled
+      compliance_drivers:
+        - type: security
+          deadline: "2026-04-30"
+          notes: "Go 1.22.3 security release"
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/golang122-build"
+  - name: golang122-runtime
+    display_name: "Go 1.22 Runtime"
+    architectures: [amd64, arm64]
+    phase: runtime
+    current_tag: "1.22.2-distroless"
+    latest_available: "1.22.3-distroless"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: full
+    lifecycle:
+      upgrade_status: scheduled
+      compliance_drivers:
+        - type: security
+          deadline: "2026-04-30"
+          notes: "Distroless base update"
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/golang122-runtime"
+  - name: nginx-runtime
+    display_name: "NGINX Runtime"
+    architectures: [amd64, arm64]
+    phase: runtime
+    current_tag: "1.25.4-alpine"
+    latest_available: "1.25.4-alpine"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: light
+    lifecycle:
+      upgrade_status: current
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/nginx-runtime"
+  - name: postgres16-runtime
+    display_name: "PostgreSQL 16 Runtime"
+    architectures: [amd64]
+    phase: runtime
+    current_tag: "16.2-alpine"
+    latest_available: "16.3-alpine"
+    cve_status: zero
+    last_scanned: "2026-04-15T06:00:00Z"
+    tracking_level: light
+    lifecycle:
+      upgrade_status: scheduled
+      compliance_drivers:
+        - type: security
+          deadline: "2026-05-15"
+          notes: "PostgreSQL 16.3 security update"
+    ecr_path: "112233445566.dkr.ecr.us-east-1.amazonaws.com/base/postgres16-runtime"
+
+scan_schedule: "Weekly — Sunday 02:00 UTC"
+rebuild_schedule: "Weekly — Sunday 04:00 UTC"
+total_images: 16
+zero_cve_images: 16
+critical_vulns: 0

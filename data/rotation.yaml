@@ -1,0 +1,11 @@
+# TODO: Opsgenie/API seam — manual for now
+rotation:
+  - week_of: "2026-04-07"
+    primary: "Sofia Reyes"
+    secondary: "Marcus Chen"
+  - week_of: "2026-04-14"
+    primary: "Marcus Chen"
+    secondary: "Priya Kapoor"
+  - week_of: "2026-04-21"
+    primary: "Priya Kapoor"
+    secondary: "Sofia Reyes"

@@ -1,0 +1,60 @@
+rituals:
+  - id: standup
+    name: "Daily Standup"
+    cadence: daily
+    day: null
+    time: "09:15"
+    duration: "15m"
+    format: "Async check-in, sync only when blocked"
+    owner: "Rotation lead"
+    channel: "#pe-standup"
+
+  - id: sprint-planning
+    name: "Sprint Planning"
+    cadence: biweekly
+    day: Wednesday
+    time: "10:00"
+    duration: "1h"
+    format: "Review backlog, commit to sprint scope"
+    owner: "Tech Lead"
+    channel: "#pe-team"
+
+  - id: retro
+    name: "Sprint Retrospective"
+    cadence: biweekly
+    day: Tuesday
+    time: "14:00"
+    duration: "45m"
+    format: "What went well / what to improve / actions"
+    owner: "Rotating facilitator"
+    channel: "#pe-team"
+
+  - id: idp-review
+    name: "IDP Cycle Review"
+    cadence: "6-week"
+    day: Friday
+    time: "11:00"
+    duration: "1h30m"
+    format: "Demo + scope review for each IDP project"
+    owner: "Tech Lead"
+    channel: "#pe-idp"
+
+  - id: partner-sync
+    name: "Partner Sync"
+    cadence: monthly
+    day: "First Thursday"
+    time: "15:00"
+    duration: "30m"
+    format: "Dependency check-in with key partners"
+    owner: "Tech Lead"
+    channel: "#pe-partners"
+
+  - id: knowledge-share
+    name: "Knowledge Share"
+    cadence: biweekly
+    day: Friday
+    time: "16:00"
+    duration: "30m"
+    format: "Lightning talks, demos, deep dives"
+    owner: "Rotating presenter"
+    channel: "#pe-team"

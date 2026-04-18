@@ -1,0 +1,143 @@
+capabilities:
+  - id: data-pipelines
+    icon: "◈"
+    shortName: "Pipelines"
+    name: "Data Pipelines & Orchestration"
+    type: prose
+    maturity: golden_path
+    planes: [ingestion, transformation]
+    statement: "Build, deploy, and monitor data pipelines with automated orchestration, quality checks, and SLA tracking."
+    detail: "End-to-end data pipeline platform built on Apache Airflow and dbt. Supports batch and streaming ingestion from 40+ source systems. Golden path pipelines include schema validation, data quality checks, lineage tracking, and automated alerting. Pipeline-as-code via dbt projects in Git."
+    selfService:
+      - "Create a new dbt model"
+      - "View pipeline run history"
+      - "Check data freshness"
+    needsPE:
+      - "New source system integration"
+      - "Streaming pipeline setup"
+      - "Cross-domain data access"
+    stats:
+      - label: "active pipelines"
+        value: 14
+      - label: "avg run time"
+        value: "23min"
+        type: text
+    customerAvailability:
+      - customer: "Analytics"
+        state: adopted
+        note: "Full golden path — 6 pipelines"
+      - customer: "Product"
+        state: adopted
+        note: "4 pipelines, real-time dashboard feeds"
+      - customer: "Finance"
+        state: partial
+        note: "2 pipelines, 2 more in onboarding"
+      - customer: "Marketing"
+        state: available
+        note: "Onboarding scheduled for Q2"
+
+  - id: data-warehouse
+    icon: "▣"
+    shortName: "Warehouse"
+    name: "Data Warehouse & Storage"
+    type: prose
+    maturity: golden_path
+    planes: [storage, transformation]
+    statement: "Manage structured data storage with governed access, schema evolution, and cost optimization."
+    detail: "Snowflake-based data warehouse with domain-oriented architecture. Each data domain owns its schemas, with PE managing compute warehouses, access policies, and cost controls. Data is organized in bronze/silver/gold layers following the medallion architecture."
+    selfService:
+      - "Query data in your domain"
+      - "Create views in silver/gold layers"
+      - "Check storage usage"
+    needsPE:
+      - "New schema creation"
+      - "Cross-domain access grants"
+      - "Warehouse sizing changes"
+    stats:
+      - label: "total storage"
+        value: "42TB"
+        type: text
+      - label: "active warehouses"
+        value: 8
+    customerAvailability:
+      - customer: "Analytics"
+        state: adopted
+        note: "Full access — owns 3 domains"
+      - customer: "Product"
+        state: adopted
+        note: "Read access + own domain"
+      - customer: "Finance"
+        state: adopted
+        note: "Dedicated warehouse, SOX-compliant"
+      - customer: "Marketing"
+        state: partial
+        note: "Read-only access to curated datasets"
+
+  - id: ml-infra
+    icon: "◇"
+    shortName: "ML Infra"
+    name: "Machine Learning Infrastructure"
+    type: prose
+    maturity: in_progress
+    planes: [ml-platform]
+    statement: "Provide managed infrastructure for model training, feature storage, and inference serving."
+    detail: "ML platform built on SageMaker and MLflow. Feature store on Feast with Snowflake offline and Redis online stores. Model registry in MLflow with automated CI/CD for model deployment. GPU compute available on-demand for training jobs. Currently in active buildout — feature store GA, model serving in beta."
+    selfService:
+      - "Submit training jobs"
+      - "Browse feature store"
+      - "View model registry"
+    needsPE:
+      - "New feature store entity"
+      - "GPU quota increases"
+      - "Production model deployment"
+    stats:
+      - label: "models in production"
+        value: 12
+      - label: "features available"
+        value: 340
+    customerAvailability:
+      - customer: "Product"
+        state: adopted
+        note: "Recommendation engine, 3 models in prod"
+      - customer: "Analytics"
+        state: partial
+        note: "Forecasting models, feature store onboarding"
+      - customer: "Finance"
+        state: available
+        note: "Fraud detection POC planned for Q2"
+
+  - id: data-quality
+    icon: "◎"
+    shortName: "Quality"
+    name: "Data Quality & Governance"
+    type: boundary
+    maturity: manual
+    planes: [governance]
+    statement: "Enforce data quality standards, track lineage, and manage data contracts across all domains."
+    detail: "Data quality framework built on Great Expectations with custom Meridian rules. Schema contracts are defined in YAML and enforced at pipeline boundaries. Lineage tracked via OpenLineage integration with Airflow. Data catalog powered by DataHub for discovery and documentation. Governance policies enforced via automated checks — no manual review for golden path changes."
+    selfService:
+      - "View data quality dashboards"
+      - "Browse data catalog"
+      - "Check lineage for a dataset"
+    needsPE:
+      - "New data quality rules"
+      - "Schema contract changes"
+      - "Cross-domain lineage setup"
+    stats:
+      - label: "quality rules"
+        value: 186
+      - label: "schema contracts"
+        value: 24
+    customerAvailability:
+      - customer: "Analytics"
+        state: adopted
+        note: "Full quality suite, 80+ rules"
+      - customer: "Product"
+        state: adopted
+        note: "Schema contracts on all production tables"
+      - customer: "Finance"
+        state: adopted
+        note: "SOX-mandated quality checks"
+      - customer: "Marketing"
+        state: available
+        note: "Basic checks available, full suite Q2"

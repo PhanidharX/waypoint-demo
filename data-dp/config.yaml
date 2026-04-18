@@ -1,0 +1,88 @@
+team_name: "Data Platform"
+team_type: data
+company: "Meridian Corp"
+
+current_quarter: "Q1 2026"
+sprint:
+  cadence: 2-week
+  start_day: Monday
+  current_sprint: "Sprint 9"
+  idp_cycle_week: 3
+  idp_cycle_total: 6
+
+vocabulary:
+  consumers: "Data Consumers"
+  planes: "Domains"
+  intake: "Requests"
+  rotation: "On-call"
+
+relationships:
+  consumers:
+    label: "Data Consumers"
+    enabled: true
+  stakeholders:
+    label: "Stakeholders"
+    enabled: true
+  partners:
+    label: "Partners"
+    enabled: true
+
+jira:
+  project_key: DATA
+  base_url: "https://jira.internal"
+  custom_fields:
+    customer: "customfield_10001"
+    plane: "customfield_10002"
+    track: "customfield_10003"
+    work_type: "customfield_10004"
+
+voting:
+  system: jira
+  jira_issue_type: "Data Proposal"
+  project_key: DATA
+
+stats:
+  enabled: true
+  source: manual
+  thanos_url: null
+  items:
+    - id: data_processed
+      label: "data processed/day"
+      prefix: "~"
+      suffix: "TB"
+      value: 1.2
+      celebrate: false
+    - id: active_pipelines
+      label: "active pipelines"
+      value: 14
+      celebrate: false
+    - id: pipeline_reliability
+      label: "pipeline reliability"
+      suffix: "%"
+      value: 99.2
+      celebrate: false
+    - id: data_domains
+      label: "data domains"
+      value: 6
+      celebrate: false
+    - id: datasets
+      label: "datasets maintained"
+      prefix: "~"
+      value: 840
+      celebrate: false
+    - id: schema_violations
+      label: "schema violations"
+      value: 0
+      celebrate: true
+
+deployment:
+  internal_url: null
+
+notifications:
+  enabled: false
+  provider: null
+  webhook_url: null
+  triggers:
+    lifecycle_deadline_days: 30
+    scope_creep_threshold: 3
+    support_rotation_reminder: true

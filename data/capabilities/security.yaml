@@ -1,0 +1,41 @@
+# Extended detail for Security & Compliance
+sections:
+  - title: "Vault"
+    content: "HashiCorp Vault runs as a dedicated HA cluster (3 nodes, Raft storage) serving all customer workloads. Each customer gets an isolated Vault namespace with AppRole authentication. Secrets are injected into pods via the Vault Agent sidecar — no secrets in environment variables or ConfigMaps. Secret rotation is automated for database credentials (every 72 hours) and API keys (every 30 days)."
+  - title: "Certificate Management"
+    content: "cert-manager runs in every cluster with ACME issuers for internal certificates and AWS PCA for customer-facing TLS. Certificates auto-renew 30 days before expiry. Istio mTLS handles service-to-service encryption — all mesh traffic is encrypted by default."
+  - title: "Vulnerability Scanning"
+    content: "Trivy scans all base images weekly and on every rebuild. Container images are scanned on push to ECR via EventBridge trigger. Runtime scanning uses Falco for syscall monitoring and anomaly detection. Quarterly penetration testing is managed by the Security partner team."
+
+vault:
+  cluster_nodes: 3
+  storage: raft
+  namespaces: 6
+  total_secrets: 342
+  rotation_policies:
+    - type: "Database credentials"
+      interval: "72 hours"
+    - type: "API keys"
+      interval: "30 days"
+    - type: "TLS certificates"
+      interval: "Auto-renew at 30 days before expiry"
+
+scanning:
+  tool: "Trivy"
+  schedule: "Weekly + on-push"
+  runtime_tool: "Falco"
+  last_scan: "2026-04-15T06:00:00Z"
+  critical_findings: 0
+  high_findings: 0
+  medium_findings: 3
+  low_findings: 12
+
+compliance:
+  - framework: "SOC 2 Type II"
+    status: "Compliant"
+    last_audit: "2026-01-15"
+    next_audit: "2026-07-15"
+  - framework: "ISO 27001"
+    status: "In Progress"
+    last_audit: null
+    next_audit: "2026-09-01"

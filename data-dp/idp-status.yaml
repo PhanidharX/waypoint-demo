@@ -1,0 +1,28 @@
+idp_domains:
+  - id: ingestion
+    name: "Ingestion"
+    status: on-track
+    lead: "Alex Rivera"
+    projects: [1, 4]
+    summary: "40+ source connectors. Real-time streaming pipeline in progress."
+
+  - id: transformation
+    name: "Transformation"
+    status: on-track
+    lead: "Alex Rivera"
+    projects: []
+    summary: "200+ dbt models active. Medallion architecture fully adopted."
+
+  - id: ml-platform
+    name: "ML Platform"
+    status: in-progress
+    lead: "Sam Okafor"
+    projects: [3]
+    summary: "Feature store beta live. Model serving in beta, 12 models in production."
+
+  - id: governance
+    name: "Governance"
+    status: in-progress
+    lead: "Nina Petrov"
+    projects: [5]
+    summary: "186 quality rules active. DataHub adoption in early stages."

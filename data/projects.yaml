@@ -1,0 +1,125 @@
+projects:
+  - id: 1
+    name: "EKS 1.28 → 1.30 Upgrade"
+    customer: "Customer A"
+    track: idp
+    status: on-track
+    lead: "Sofia Reyes"
+    planes: [compute]
+    lastUpdated: "2d ago"
+    scopeCreep: 0
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/PLAT-200"
+      id: "PLAT-200"
+      label: "View in Jira"
+    channel:
+      system: external
+      url: "https://webex.internal/spaces/eks-upgrade"
+      id: null
+      label: "#proj-custa-eks"
+
+  - id: 2
+    name: "Environment Blueprint v2"
+    customer: "Internal"
+    track: idp
+    status: in-progress
+    lead: "Marcus Chen"
+    planes: [infra-cicd, app-cicd]
+    lastUpdated: "1d ago"
+    scopeCreep: 2
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/PLAT-210"
+      id: "PLAT-210"
+      label: "View in Jira"
+    channel:
+      system: external
+      url: "https://webex.internal/spaces/env-v2"
+      id: null
+      label: "#proj-env-blueprint"
+
+  - id: 3
+    name: "Istio Migration (Gloo → Istio)"
+    customer: "Customer A"
+    track: idp
+    status: slipping
+    lead: "Marcus Chen"
+    planes: [compute, infra-cicd]
+    lastUpdated: "5d ago"
+    scopeCreep: 4
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/PLAT-180"
+      id: "PLAT-180"
+      label: "View in Jira"
+    channel:
+      system: external
+      url: "https://webex.internal/spaces/istio-migration"
+      id: null
+      label: "#proj-istio"
+
+  - id: 4
+    name: "Java 25 Base Image Rollout"
+    customer: "Customer B"
+    track: ongoing
+    status: on-track
+    lead: "Priya Kapoor"
+    planes: [app-cicd]
+    lastUpdated: "3d ago"
+    scopeCreep: 0
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/PLAT-225"
+      id: "PLAT-225"
+      label: "View in Jira"
+
+  - id: 5
+    name: "Karpenter Provisioner Tuning"
+    customer: "Customer A"
+    track: ongoing
+    status: in-progress
+    lead: "Sofia Reyes"
+    planes: [compute]
+    lastUpdated: "1d ago"
+    scopeCreep: 1
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/PLAT-230"
+      id: "PLAT-230"
+      label: "View in Jira"
+
+  - id: 6
+    name: "Customer C Onboarding"
+    customer: "Customer C"
+    track: idp
+    status: on-track
+    lead: "Priya Kapoor"
+    planes: [infra-cicd, app-cicd, compute]
+    lastUpdated: "1d ago"
+    scopeCreep: 0
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/PLAT-240"
+      id: "PLAT-240"
+      label: "View in Jira"
+    channel:
+      system: external
+      url: "https://webex.internal/spaces/custc-onboard"
+      id: null
+      label: "#proj-custc-onboard"
+
+  - id: 7
+    name: "Pipeline Success Rate Improvement"
+    customer: "Internal"
+    track: ongoing
+    status: on-track
+    lead: "Marcus Chen"
+    planes: [app-cicd]
+    lastUpdated: "4d ago"
+    scopeCreep: 0
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/PLAT-215"
+      id: "PLAT-215"
+      label: "View in Jira"

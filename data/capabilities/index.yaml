@@ -1,0 +1,177 @@
+capabilities:
+  - id: env-provisioning
+    icon: "⬡"
+    shortName: "Environments"
+    name: "Environment Provisioning & Delivery"
+    type: prose
+    maturity: golden_path
+    planes: [infra-cicd, app-cicd]
+    statement: "Provision fully-wired environments with networking, secrets, and CI/CD in a single intake request."
+    detail: "End-to-end environment provisioning covering VPC allocation, namespace creation, secret injection, and pipeline wiring. Golden path environments ship in 48 hours; custom configurations go through architecture review."
+    selfService:
+      - "Request a new namespace"
+      - "Rotate secrets for existing environment"
+      - "View environment inventory"
+    needsPE:
+      - "New VPC or subnet allocation"
+      - "Cross-account networking"
+      - "Custom IAM policy attachments"
+    stats:
+      - label: "environments"
+        value: 34
+        celebrate: false
+      - label: "avg provision time"
+        value: "48h"
+        type: text
+        celebrate: false
+    customerAvailability:
+      - customer: "Customer A"
+        state: adopted
+        note: "Full golden path — 12 environments"
+      - customer: "Customer B"
+        state: adopted
+        note: "8 environments, migrating from legacy"
+      - customer: "Customer C"
+        state: partial
+        note: "Dev/staging only — prod pending security review"
+    partnerDeps:
+      - partner_id: networking
+        name: "Networking Team"
+        relationship: "Network approval required for new VPCs"
+        impact: "Adds 2-week lead time for new environments"
+        sla_effect: "Explains 10-day SLA for new environments"
+        golden_path_blocker: true
+        blocker_detail: "Blocked pending GSO policy-as-code API"
+      - partner_id: security
+        name: "Security Team"
+        relationship: "Security review for production environments"
+        impact: "1-week review cycle for prod access"
+        sla_effect: null
+        golden_path_blocker: false
+        blocker_detail: null
+    ctas:
+      - label: "Request an environment"
+        type: intake
+        intake_template: "I need [env type] for [service] in [account]"
+        channel: "#pe-intake"
+      - label: "View environment inventory"
+        type: self-service
+        intake_template: null
+        channel: null
+
+  - id: compute
+    icon: "◈"
+    shortName: "Compute"
+    name: "Compute & Cluster Management"
+    type: prose
+    maturity: golden_path
+    planes: [compute]
+    statement: "Manage EKS clusters, node groups, and workload scheduling across all customer accounts."
+    detail: "Dedicated EKS clusters per customer with managed node groups, auto-scaling, and Karpenter provisioners. Cluster upgrades follow a rolling schedule with canary validation per customer."
+    selfService:
+      - "View cluster status"
+      - "Check node group capacity"
+      - "View upgrade schedule"
+    needsPE:
+      - "New cluster provisioning"
+      - "Cluster version upgrades"
+      - "Custom node group configurations"
+      - "Karpenter provisioner tuning"
+    stats:
+      - label: "EKS clusters"
+        value: 8
+        celebrate: false
+      - label: "workloads"
+        value: 680
+        celebrate: false
+      - label: "node groups"
+        value: 24
+        celebrate: false
+    customerAvailability:
+      - customer: "Customer A"
+        state: adopted
+        note: "EKS 1.30 — fully current"
+      - customer: "Customer B"
+        state: adopted
+        note: "EKS 1.29 — upgrade scheduled Q2"
+      - customer: "Customer C"
+        state: available
+        note: "Cluster provisioned, workload migration pending"
+    partnerDeps:
+      - partner_id: networking
+        name: "Networking Team"
+        relationship: "CNI plugin and load balancer configuration"
+        impact: "Coordination required for cluster networking changes"
+        sla_effect: null
+        golden_path_blocker: false
+        blocker_detail: null
+    ctas:
+      - label: "Request a new cluster"
+        type: intake
+        intake_template: "I need a cluster for [customer] in [region]"
+        channel: "#pe-intake"
+      - label: "View upgrade schedule"
+        type: self-service
+        intake_template: null
+        channel: null
+
+  - id: base-images
+    icon: "▣"
+    shortName: "Base Images"
+    name: "Base Container Images & Lifecycle"
+    type: matrix
+    maturity: mixed
+    planes: [app-cicd]
+    statement: "Maintain hardened, scanned base images with automated lifecycle tracking and zero-CVE targets."
+    detail: "Centrally-managed base container images built on distroless and Alpine foundations. Every image is scanned daily via Trivy, tracked for CVE status, and published to private ECR repositories per customer account."
+    selfService:
+      - "Browse image catalog"
+      - "Check CVE status for an image"
+      - "View available tags"
+    needsPE:
+      - "New base image creation"
+      - "Architecture additions (arm64)"
+      - "Custom image variants"
+    stats:
+      - label: "base images"
+        value: 18
+        celebrate: false
+      - label: "zero-CVE"
+        value: 16
+        celebrate: false
+      - label: "critical CVEs"
+        value: 0
+        celebrate: true
+    customerAvailability:
+      - customer: "Customer A"
+        state: adopted
+        note: "All images adopted"
+        variants_adopted: [java21, node20, python3.12]
+        variants_available: [java25]
+      - customer: "Customer B"
+        state: partial
+        note: "Java and Node adopted, Python pending"
+        variants_adopted: [java21, node20]
+        variants_available: [python3.12, java25]
+      - customer: "Customer C"
+        state: available
+        note: "Available but not yet adopted"
+        variants_adopted: []
+        variants_available: [java21, node20, python3.12, java25]
+    partnerDeps:
+      - partner_id: security
+        name: "Security Team"
+        relationship: "CVE policy and scanning thresholds"
+        impact: "Defines what constitutes a blocking CVE"
+        sla_effect: "Critical CVE = 72h remediation SLA"
+        golden_path_blocker: false
+        blocker_detail: null
+    ctas:
+      - label: "Request a new base image"
+        type: intake
+        intake_template: "I need a base image for [language/runtime] version [X]"
+        channel: "#pe-intake"
+      - label: "Check image CVE status"
+        type: self-service
+        intake_template: null
+        channel: null

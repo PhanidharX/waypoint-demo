@@ -1,0 +1,101 @@
+partners:
+  - id: legal-privacy
+    name: "Legal & Privacy Team"
+    area: "Data Governance & Privacy"
+    desc: "Oversees data classification, GDPR/CCPA compliance, and privacy impact assessments. All new data sources containing PII must go through their review process before ingestion."
+    whatWeConsume:
+      - "Data classification policies"
+      - "Privacy impact assessment approvals"
+      - "PII handling guidelines"
+      - "Data retention schedules"
+    integrationPoint: "Privacy review integrated into pipeline onboarding. Automated PII detection flags datasets for review."
+    engagementProcess: "Data Platform-mediated for new sources. Direct engagement for policy questions via #legal-data."
+    theirCycle: "1-week review for standard sources, 3-week for new PII categories"
+    frontDoor: "https://legal.internal.meridian.dev/data-request"
+    spaceLink: "#legal-data"
+    isCustomer: false
+    affects_capabilities:
+      - capability_id: data-pipelines
+        how: "Approves new source system integrations containing PII"
+      - capability_id: data-quality
+        how: "Defines data classification rules and retention policies"
+    sor_ref:
+      system: external
+      url: "https://legal.internal.meridian.dev"
+      id: null
+      label: "Legal portal"
+
+  - id: infosec
+    name: "Information Security"
+    area: "Security & Access Control"
+    desc: "Manages data access policies, encryption standards, and audit requirements. Partners closely on SOX compliance for financial data domains."
+    whatWeConsume:
+      - "Encryption-at-rest policies"
+      - "Access control frameworks"
+      - "Audit logging requirements"
+      - "SOX compliance standards"
+    integrationPoint: "Row-level security policies defined by InfoSec, implemented by Data Platform in Snowflake."
+    engagementProcess: "Data Platform-mediated. Security reviews bundled into quarterly access audits."
+    theirCycle: "Quarterly access review, ad-hoc for new data domains"
+    frontDoor: "https://security.internal.meridian.dev/data"
+    spaceLink: "#infosec-data"
+    isCustomer: false
+    affects_capabilities:
+      - capability_id: data-warehouse
+        how: "Defines row-level security and column masking policies"
+      - capability_id: data-quality
+        how: "Sets audit logging and compliance requirements"
+    sor_ref:
+      system: external
+      url: "https://security.internal.meridian.dev"
+      id: null
+      label: "Security portal"
+
+  - id: finops
+    name: "FinOps Team"
+    area: "Cloud Cost Management"
+    desc: "Tracks and optimizes cloud spend across data infrastructure. Provides cost allocation dashboards and chargeback reports to data domain owners."
+    whatWeConsume:
+      - "Cost allocation tags and policies"
+      - "Budget thresholds and alerts"
+      - "Chargeback reports"
+      - "Reserved capacity recommendations"
+    integrationPoint: "Snowflake warehouse costs tagged per domain. Airflow compute costs allocated via namespace labels."
+    engagementProcess: "Monthly cost review meetings. Ad-hoc for budget threshold breaches."
+    theirCycle: "Monthly cost reports, quarterly optimization reviews"
+    frontDoor: "https://finops.internal.meridian.dev"
+    spaceLink: "#finops-data"
+    isCustomer: false
+    affects_capabilities:
+      - capability_id: data-warehouse
+        how: "Sets warehouse auto-suspend policies and compute quotas"
+      - capability_id: ml-infra
+        how: "Manages GPU budget allocations for training jobs"
+    sor_ref:
+      system: external
+      url: "https://finops.internal.meridian.dev"
+      id: null
+      label: "FinOps dashboard"
+
+  - id: bi-team
+    name: "Business Intelligence"
+    area: "Reporting & Analytics"
+    desc: "Primary consumer of the data warehouse. Builds executive dashboards, self-service reports, and ad-hoc analyses using Tableau and Looker connected to gold-layer datasets."
+    whatWeConsume:
+      - "Curated gold-layer datasets"
+      - "Semantic layer definitions"
+      - "Data freshness SLAs"
+    integrationPoint: "BI connects directly to Snowflake gold-layer views. Data Platform manages freshness SLAs and schema stability."
+    engagementProcess: "Direct engagement via #bi-data-platform. Weekly sync on data model changes."
+    theirCycle: "Weekly sync, ad-hoc for urgent dashboard fixes"
+    frontDoor: "https://bi.internal.meridian.dev"
+    spaceLink: "#bi-data-platform"
+    isCustomer: true
+    affects_capabilities:
+      - capability_id: data-warehouse
+        how: "Primary consumer of gold-layer datasets and semantic models"
+    sor_ref:
+      system: external
+      url: "https://bi.internal.meridian.dev"
+      id: null
+      label: "BI portal"

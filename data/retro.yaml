@@ -1,0 +1,15 @@
+# populated by scripts/scope-creep.js
+current_quarter: "Q1 2026"
+metrics:
+  total_stories: 48
+  scope_creep_items: 7
+  scope_creep_pct: 14.6
+  velocity_avg: 24
+  stories_completed: 41
+highlights:
+  - "Completed EKS 1.29 upgrade for Customer B ahead of schedule"
+  - "Base image zero-CVE target maintained for 6 consecutive weeks"
+  - "Environment provisioning SLA improved from 5d to 48h"
+improvements:
+  - "Istio migration scope underestimated — partner dependency not factored"
+  - "Need better async communication during support rotation"

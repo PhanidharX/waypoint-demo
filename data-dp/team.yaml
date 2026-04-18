@@ -1,0 +1,59 @@
+team:
+  - id: alex-rivera
+    name: "Alex Rivera"
+    role: "Data Engineer"
+    primaryPlane: ingestion
+    secondaryPlane: transformation
+    hat: "Tech Lead"
+    onSupportToday: false
+    projects: [1, 4]
+    bandwidth: null
+    profile_link:
+      system: external
+      url: "https://directory.internal/alex-rivera"
+      id: null
+      label: "View profile"
+
+  - id: jordan-kim
+    name: "Jordan Kim"
+    role: "Data Engineer"
+    primaryPlane: storage
+    secondaryPlane: governance
+    hat: "FinOps Liaison"
+    onSupportToday: true
+    projects: [2, 5]
+    bandwidth: null
+    profile_link:
+      system: external
+      url: "https://directory.internal/jordan-kim"
+      id: null
+      label: "View profile"
+
+  - id: sam-okafor
+    name: "Sam Okafor"
+    role: "ML Engineer"
+    primaryPlane: ml-platform
+    hat: "ML Platform Lead"
+    onSupportToday: false
+    projects: [3]
+    bandwidth: null
+    profile_link:
+      system: external
+      url: "https://directory.internal/sam-okafor"
+      id: null
+      label: "View profile"
+
+  - id: nina-petrov
+    name: "Nina Petrov"
+    role: "Data Engineer"
+    primaryPlane: governance
+    secondaryPlane: transformation
+    hat: null
+    onSupportToday: false
+    projects: [4, 5]
+    bandwidth: null
+    profile_link:
+      system: external
+      url: "https://directory.internal/nina-petrov"
+      id: null
+      label: "View profile"

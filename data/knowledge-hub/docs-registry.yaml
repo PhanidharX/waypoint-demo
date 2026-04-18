@@ -1,0 +1,48 @@
+docs:
+  - id: env-provisioning-guide
+    title: "Environment Provisioning Guide"
+    type: runbook
+    plane: infra-cicd
+    status: current
+    url: "https://confluence.internal/pe/env-provisioning"
+    last_reviewed: "2026-03-15"
+
+  - id: eks-upgrade-runbook
+    title: "EKS Cluster Upgrade Runbook"
+    type: runbook
+    plane: compute
+    status: current
+    url: "https://confluence.internal/pe/eks-upgrade"
+    last_reviewed: "2026-04-01"
+
+  - id: base-image-lifecycle
+    title: "Base Image Lifecycle Policy"
+    type: policy
+    plane: app-cicd
+    status: current
+    url: "https://confluence.internal/pe/base-image-lifecycle"
+    last_reviewed: "2026-03-20"
+
+  - id: incident-response
+    title: "PE Incident Response Playbook"
+    type: runbook
+    plane: null
+    status: needs-review
+    url: "https://confluence.internal/pe/incident-response"
+    last_reviewed: "2025-11-10"
+
+  - id: onboarding-checklist
+    title: "New Customer Onboarding Checklist"
+    type: checklist
+    plane: null
+    status: current
+    url: "https://confluence.internal/pe/customer-onboarding"
+    last_reviewed: "2026-02-28"
+
+  - id: terraform-conventions
+    title: "Terraform Module Conventions"
+    type: reference
+    plane: infra-cicd
+    status: current
+    url: "https://confluence.internal/pe/terraform-conventions"
+    last_reviewed: "2026-01-15"

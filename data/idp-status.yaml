@@ -1,0 +1,21 @@
+idp_domains:
+  - id: compute
+    name: "Compute"
+    status: on-track
+    lead: "Sofia Reyes"
+    projects: [1, 5]
+    summary: "EKS upgrades progressing. Karpenter tuning in progress."
+
+  - id: infra-cicd
+    name: "Infra CI/CD"
+    status: in-progress
+    lead: "Marcus Chen"
+    projects: [2, 3]
+    summary: "Environment Blueprint v2 active. Istio migration slipping due to partner dependency."
+
+  - id: app-cicd
+    name: "App CI/CD"
+    status: on-track
+    lead: "Priya Kapoor"
+    projects: [4, 7]
+    summary: "Java 25 rollout on track. Pipeline success rate work ongoing."

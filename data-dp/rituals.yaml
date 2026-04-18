@@ -1,0 +1,37 @@
+rituals:
+  - name: "Daily Standup"
+    cadence: daily
+    day: null
+    time: "9:30 AM"
+    duration: "15 min"
+    status: running
+  - name: "Sprint Planning"
+    cadence: biweekly
+    day: Monday
+    time: "10:00 AM"
+    duration: "60 min"
+    status: running
+  - name: "Sprint Retro"
+    cadence: biweekly
+    day: Friday
+    time: "2:00 PM"
+    duration: "45 min"
+    status: running
+  - name: "Data Domain Review"
+    cadence: monthly
+    day: "First Thursday"
+    time: "11:00 AM"
+    duration: "60 min"
+    status: running
+  - name: "Partner Sync"
+    cadence: monthly
+    day: "Third Wednesday"
+    time: "3:00 PM"
+    duration: "30 min"
+    status: running
+  - name: "Data Quality Standup"
+    cadence: weekly
+    day: Tuesday
+    time: "10:00 AM"
+    duration: "15 min"
+    status: running

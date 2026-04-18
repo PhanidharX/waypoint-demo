@@ -1,0 +1,71 @@
+# Extended detail for Observability
+sections:
+  - title: "Stack"
+    content: "Meridian Corp's observability stack is built on Prometheus for metrics collection, Thanos for long-term storage and cross-cluster querying, Grafana for dashboards, and Alertmanager for routing alerts to PagerDuty and Slack. Logs flow through OTEL collectors to Splunk. Each customer cluster runs a local Prometheus instance that federates to central Thanos."
+  - title: "Dashboards"
+    content: "PE maintains a standard dashboard library provisioned via Grafana-as-code (Terraform). Every new environment automatically gets: cluster health, workload SLIs, Istio mesh traffic, Concourse pipeline status, and cost tracking dashboards. Teams can create custom dashboards in their own Grafana folders."
+  - title: "Alerting"
+    content: "Standard alert rules cover: node pressure (CPU > 80%, memory > 85%), pod restarts (> 3 in 10 min), certificate expiry (< 30 days), PVC usage (> 85%), and Istio 5xx rates (> 1%). Critical alerts page the on-call PE via PagerDuty. Warning alerts go to #pe-alerts in Slack."
+
+dashboards:
+  - name: "Cluster Health"
+    uid: "cluster-health-v3"
+    scope: per-cluster
+    panels: 12
+    status: current
+  - name: "Workload SLIs"
+    uid: "workload-sli-v2"
+    scope: per-namespace
+    panels: 8
+    status: current
+  - name: "Istio Mesh Traffic"
+    uid: "istio-mesh-v2"
+    scope: per-cluster
+    panels: 10
+    status: current
+  - name: "Concourse Pipelines"
+    uid: "concourse-pipelines-v1"
+    scope: global
+    panels: 6
+    status: current
+  - name: "Cost Tracking"
+    uid: "cost-tracking-v1"
+    scope: per-customer
+    panels: 8
+    status: current
+  - name: "Base Image CVE Status"
+    uid: "base-image-cves-v1"
+    scope: global
+    panels: 4
+    status: current
+
+alert_rules:
+  - name: "NodeCPUHigh"
+    severity: warning
+    threshold: "CPU > 80% for 5m"
+    destination: "#pe-alerts"
+  - name: "NodeMemoryHigh"
+    severity: warning
+    threshold: "Memory > 85% for 5m"
+    destination: "#pe-alerts"
+  - name: "PodCrashLooping"
+    severity: critical
+    threshold: "> 3 restarts in 10m"
+    destination: "PagerDuty"
+  - name: "CertExpiringSoon"
+    severity: warning
+    threshold: "< 30 days to expiry"
+    destination: "#pe-alerts"
+  - name: "PVCUsageHigh"
+    severity: warning
+    threshold: "> 85% used"
+    destination: "#pe-alerts"
+  - name: "Istio5xxRate"
+    severity: critical
+    threshold: "> 1% 5xx for 5m"
+    destination: "PagerDuty"
+
+thanos:
+  retention: "90 days raw, 1 year downsampled"
+  query_endpoint: "https://thanos.internal.meridian.dev"
+  stores: 8

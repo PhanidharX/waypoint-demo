@@ -1,0 +1,80 @@
+projects:
+  - id: 1
+    name: "Real-time Streaming Pipeline"
+    customer: "Product"
+    track: idp
+    status: in-progress
+    lead: "Alex Rivera"
+    planes: [ingestion]
+    lastUpdated: "1d ago"
+    scopeCreep: 2
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/DATA-150"
+      id: "DATA-150"
+      label: "View in Jira"
+    channel:
+      system: external
+      url: "https://webex.internal/spaces/streaming"
+      id: null
+      label: "#proj-streaming"
+
+  - id: 2
+    name: "Snowflake Cost Optimization"
+    customer: "Internal"
+    track: idp
+    status: on-track
+    lead: "Jordan Kim"
+    planes: [storage]
+    lastUpdated: "3d ago"
+    scopeCreep: 0
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/DATA-162"
+      id: "DATA-162"
+      label: "View in Jira"
+
+  - id: 3
+    name: "Feature Store GA"
+    customer: "Product"
+    track: idp
+    status: on-track
+    lead: "Sam Okafor"
+    planes: [ml-platform]
+    lastUpdated: "2d ago"
+    scopeCreep: 1
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/DATA-170"
+      id: "DATA-170"
+      label: "View in Jira"
+
+  - id: 4
+    name: "Marketing Data Onboarding"
+    customer: "Marketing"
+    track: ongoing
+    status: in-progress
+    lead: "Alex Rivera"
+    planes: [ingestion, governance]
+    lastUpdated: "1d ago"
+    scopeCreep: 0
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/DATA-180"
+      id: "DATA-180"
+      label: "View in Jira"
+
+  - id: 5
+    name: "SOX Compliance Automation"
+    customer: "Finance"
+    track: ongoing
+    status: on-track
+    lead: "Jordan Kim"
+    planes: [governance]
+    lastUpdated: "5d ago"
+    scopeCreep: 0
+    sor_ref:
+      system: jira
+      url: "https://jira.internal/browse/DATA-185"
+      id: "DATA-185"
+      label: "View in Jira"

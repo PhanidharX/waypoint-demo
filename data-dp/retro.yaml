@@ -1,0 +1,16 @@
+# populated by scripts/scope-creep.js
+current_quarter: "Q1 2026"
+metrics:
+  total_stories: 41
+  scope_creep_items: 3
+  scope_creep_pct: 7.9
+  velocity_avg: 19
+  stories_completed: 38
+highlights:
+  - "Feature store beta launched on time"
+  - "Pipeline reliability improved from 98.1% to 99.2%"
+  - "Onboarded Finance domain with SOX-compliant quality checks"
+improvements:
+  - "Streaming pipeline complexity underestimated"
+  - "Need better runbooks for on-call"
+  - "DataHub adoption slow — training needed"

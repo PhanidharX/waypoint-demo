@@ -1,0 +1,43 @@
+docs:
+  - id: pipeline-runbook
+    title: "Pipeline Operations Runbook"
+    type: runbook
+    plane: ingestion
+    status: current
+    url: "https://confluence.internal/display/DATA/Pipeline-Runbook"
+    last_reviewed: "2026-03-15"
+  - id: snowflake-admin
+    title: "Snowflake Administration Guide"
+    type: guide
+    plane: storage
+    status: current
+    url: "https://confluence.internal/display/DATA/Snowflake-Admin"
+    last_reviewed: "2026-03-01"
+  - id: data-contracts
+    title: "Data Contract Specification"
+    type: reference
+    plane: governance
+    status: current
+    url: "https://confluence.internal/display/DATA/Data-Contracts"
+    last_reviewed: "2026-04-01"
+  - id: ml-model-deployment
+    title: "ML Model Deployment Guide"
+    type: guide
+    plane: ml-platform
+    status: draft
+    url: "https://confluence.internal/display/DATA/ML-Deploy"
+    last_reviewed: "2026-02-15"
+  - id: oncall-handbook
+    title: "Data Platform On-call Handbook"
+    type: runbook
+    plane: null
+    status: needs-review
+    url: "https://confluence.internal/display/DATA/Oncall"
+    last_reviewed: "2025-12-01"
+  - id: dbt-style-guide
+    title: "dbt Style Guide"
+    type: reference
+    plane: transformation
+    status: current
+    url: "https://confluence.internal/display/DATA/dbt-Style"
+    last_reviewed: "2026-03-20"

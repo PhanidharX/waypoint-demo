@@ -1,0 +1,79 @@
+# Extended detail for Environment Provisioning & Delivery
+sections:
+  - title: "How It Works"
+    content: "Teams request environments through #pe-intake. Golden path environments — pre-wired with VPC, namespaces, secrets, and CI/CD — ship within 48 hours. Custom configurations requiring new VPCs or cross-account networking go through architecture review and typically take 10 business days due to upstream network approvals."
+  - title: "Golden Path Stack"
+    content: "Each golden path environment includes: dedicated EKS namespace, pre-configured Istio sidecar injection, Vault secret mounts (auto-rotated), Concourse pipeline wiring, Grafana dashboard provisioning, and DNS entries in Route 53 private hosted zones."
+  - title: "What's Coming"
+    content: "Self-service environment creation via Backstage plugin (Q2 2026). This will eliminate the intake step for golden path environments entirely, reducing provisioning to under 15 minutes."
+
+environments:
+  - name: "Customer A — Production"
+    account: "custA-prod"
+    region: us-east-1
+    eks_cluster: "custA-prod-eks"
+    namespaces: 12
+    status: healthy
+    last_provisioned: "2026-03-15"
+  - name: "Customer A — Staging"
+    account: "custA-staging"
+    region: us-east-1
+    eks_cluster: "custA-staging-eks"
+    namespaces: 8
+    status: healthy
+    last_provisioned: "2026-03-01"
+  - name: "Customer B — Production"
+    account: "custB-prod"
+    region: us-west-2
+    eks_cluster: "custB-prod-eks"
+    namespaces: 6
+    status: healthy
+    last_provisioned: "2026-02-20"
+  - name: "Customer B — Staging"
+    account: "custB-staging"
+    region: us-west-2
+    eks_cluster: "custB-staging-eks"
+    namespaces: 4
+    status: healthy
+    last_provisioned: "2026-02-28"
+  - name: "Customer C — Dev"
+    account: "custC-dev"
+    region: us-east-1
+    eks_cluster: "custC-dev-eks"
+    namespaces: 3
+    status: healthy
+    last_provisioned: "2026-03-20"
+  - name: "Customer C — Staging"
+    account: "custC-staging"
+    region: us-east-1
+    eks_cluster: "custC-staging-eks"
+    namespaces: 2
+    status: provisioning
+    last_provisioned: "2026-04-10"
+
+terraform_modules:
+  - name: "env-base"
+    version: "3.2.1"
+    description: "VPC, subnets, NAT gateways, security groups"
+    last_updated: "2026-03-01"
+  - name: "env-eks"
+    version: "2.8.0"
+    description: "EKS cluster, node groups, IRSA roles"
+    last_updated: "2026-03-15"
+  - name: "env-secrets"
+    version: "1.5.2"
+    description: "Vault namespace, AppRole, secret engine mounts"
+    last_updated: "2026-02-15"
+  - name: "env-pipeline"
+    version: "2.1.0"
+    description: "Concourse team, pipeline templates, resource configs"
+    last_updated: "2026-03-20"
+  - name: "env-observability"
+    version: "1.3.0"
+    description: "Grafana dashboards, Prometheus rules, alert channels"
+    last_updated: "2026-01-30"
+
+sla:
+  golden_path: "48 hours"
+  custom: "10 business days"
+  expedited: "4 hours (P1 incidents only)"

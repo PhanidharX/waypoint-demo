@@ -1,0 +1,51 @@
+# Extended detail for Developer Experience
+sections:
+  - title: "Golden Path"
+    content: "The golden path is PE's opinionated, fully-supported route for shipping software at Meridian Corp. It covers: Git repository setup (Bitbucket template), CI/CD pipeline (Concourse), container image (curated base images), Kubernetes deployment (Helm chart template), observability (pre-configured Grafana + alerts), and secret management (Vault integration). Teams on the golden path get same-day support; off-path configurations are best-effort."
+  - title: "CLI Tools"
+    content: "pe-cli is an internal CLI that wraps common PE operations: creating new services from templates, checking environment status, rotating secrets, viewing pipeline logs, and submitting intake requests. Installed via Homebrew tap (brew install meridian/tap/pe-cli)."
+  - title: "Templates"
+    content: "PE maintains starter templates for: Java 21 microservice (Spring Boot + Gradle), Node.js API (Express + TypeScript), Python service (FastAPI), and Go service. Each template includes Dockerfile, Helm chart, Concourse pipeline, Grafana dashboard, and README with onboarding steps."
+
+templates:
+  - name: "java21-microservice"
+    framework: "Spring Boot 3.2 + Gradle 8.7"
+    includes: [dockerfile, helm-chart, concourse-pipeline, grafana-dashboard, vault-config]
+    last_updated: "2026-03-15"
+    usage_count: 28
+  - name: "node20-api"
+    framework: "Express 4.x + TypeScript 5"
+    includes: [dockerfile, helm-chart, concourse-pipeline, grafana-dashboard, vault-config]
+    last_updated: "2026-03-01"
+    usage_count: 14
+  - name: "python311-service"
+    framework: "FastAPI 0.110"
+    includes: [dockerfile, helm-chart, concourse-pipeline, grafana-dashboard, vault-config]
+    last_updated: "2026-02-20"
+    usage_count: 8
+  - name: "golang122-service"
+    framework: "Go 1.22 + Chi router"
+    includes: [dockerfile, helm-chart, concourse-pipeline, grafana-dashboard]
+    last_updated: "2026-01-30"
+    usage_count: 5
+
+cli:
+  name: "pe-cli"
+  version: "2.4.0"
+  install: "brew install meridian/tap/pe-cli"
+  commands:
+    - name: "pe new"
+      description: "Scaffold a new service from template"
+    - name: "pe env status"
+      description: "Check environment health and recent changes"
+    - name: "pe secrets rotate"
+      description: "Rotate secrets for a service in an environment"
+    - name: "pe pipeline logs"
+      description: "Tail Concourse pipeline logs"
+    - name: "pe intake"
+      description: "Submit an intake request from the terminal"
+
+documentation:
+  getting_started: "https://docs.internal.meridian.dev/pe/getting-started"
+  golden_path_guide: "https://docs.internal.meridian.dev/pe/golden-path"
+  cli_reference: "https://docs.internal.meridian.dev/pe/cli"

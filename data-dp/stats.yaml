@@ -1,0 +1,16 @@
+generated_at: "2026-04-15T06:00:00Z"
+source: manual
+data_processed:
+  per_day_tb: 1.2
+pipelines:
+  active: 14
+  reliability: 99.2
+  avg_runtime_minutes: 23
+domains:
+  total: 6
+datasets:
+  maintained: 840
+quality:
+  schema_violations_this_week: 0
+  quality_rules: 186
+  schema_contracts: 24

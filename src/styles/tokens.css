@@ -1,0 +1,56 @@
+:root {
+  /* Dark mode — DEFAULT */
+  --color-bg:           #09090b;  /* zinc-950 */
+  --color-surface:      #18181b;  /* zinc-900 */
+  --color-surface-high: #27272a;  /* zinc-800 */
+  --color-surface-hover:#2d2d30;
+  --color-surface-zebra:#1c1c1f;  /* table alternating rows */
+  --color-border:       rgba(255,255,255,0.08);
+  --color-border-hover: rgba(255,255,255,0.16);
+  --color-text:         #f4f4f5;  /* zinc-100 */
+  --color-muted:        #a1a1aa;  /* zinc-400 */
+  --color-subtle:       #71717a;  /* zinc-500 */
+
+  /* Accent */
+  --color-accent:       #10b981;  /* emerald-500 — CONFIRMED */
+  --color-accent-dim:   rgba(16,185,129,0.12);
+  --color-accent-text:  #10b981;
+
+  /* Status */
+  --color-warning:      #fbbf24;
+  --color-warning-dim:  rgba(251,191,36,0.10);
+  --color-critical:     #f87171;
+  --color-critical-dim: rgba(248,113,113,0.10);
+  --color-info:         #38bdf8;
+  --color-info-dim:     rgba(56,189,248,0.10);
+  --color-purple:       #a78bfa;
+  --color-purple-dim:   rgba(167,139,250,0.10);
+
+  /* Typography */
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Shadows (Stripe-style layered) */
+  --shadow:      0 0 0 1px rgba(255,255,255,0.05),
+                 0 4px 6px -1px rgba(0,0,0,0.5),
+                 0 20px 40px -8px rgba(0,0,0,0.6);
+  --shadow-hover:0 0 0 1px rgba(255,255,255,0.08),
+                 0 8px 16px -2px rgba(0,0,0,0.6),
+                 0 32px 56px -8px rgba(0,0,0,0.7);
+}
+
+.light {
+  /* Light mode — toggled via class on <html> */
+  --color-bg:           #f8fafc;
+  --color-surface:      #ffffff;
+  --color-surface-high: #f1f5f9;
+  --color-surface-hover:#e2e8f0;
+  --color-surface-zebra:#f8fafc;
+  --color-border:       rgba(0,0,0,0.08);
+  --color-border-hover: rgba(0,0,0,0.16);
+  --color-text:         #0f172a;
+  --color-muted:        #64748b;
+  --color-subtle:       #94a3b8;
+  --color-accent-text:  #059669;  /* darker in light mode */
+  /* All other tokens same as dark */
+}

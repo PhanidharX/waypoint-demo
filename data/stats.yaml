@@ -1,0 +1,19 @@
+# populated by scripts/stats.js
+generated_at: "2026-04-15T06:00:00Z"
+source: manual
+builds:
+  per_day: 280
+  app_builds_per_day: 72
+  success_rate: 94
+  avg_duration_seconds: 342
+clusters:
+  total: 8
+workloads:
+  running: 680
+environments:
+  total: 28
+base_images:
+  total: 16
+  zero_cve: 16
+  last_scanned: "2026-04-15T06:00:00Z"
+  critical_vulns: 0

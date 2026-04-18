@@ -1,0 +1,98 @@
+partners:
+  - id: networking
+    name: "Enterprise Networking Team"
+    area: "Network Infrastructure"
+    desc: "Manages VPC allocations, subnet design, firewall rules, and DNS resolution across all accounts. PE depends on networking for every new environment and cross-account connectivity change."
+    whatWeConsume:
+      - "VPC and subnet allocations"
+      - "Transit Gateway attachments"
+      - "DNS private hosted zones"
+      - "Firewall rule change requests"
+    integrationPoint: "Terraform modules consume their VPC outputs; environment provisioning triggers their approval workflow."
+    engagementProcess: "PE-mediated — do not contact directly. Raise via #pe-intake."
+    theirCycle: "2-week approval cycle, expedited path for production incidents"
+    frontDoor: "https://networking.internal/request"
+    spaceLink: "#networking-pe-collab"
+    isCustomer: false
+    affects_capabilities:
+      - capability_id: env-provisioning
+        how: "Approves network connectivity for new environments"
+    sor_ref:
+      system: external
+      url: "https://networking.internal"
+      id: null
+      label: "Their front door"
+
+  - id: security
+    name: "Information Security"
+    area: "Security & Compliance"
+    desc: "Owns CVE policy, container scanning thresholds, secret management standards, and production access review. Security review is required for all production environment promotions."
+    whatWeConsume:
+      - "CVE scanning policies and thresholds"
+      - "Secret management standards"
+      - "Production access approval"
+      - "Compliance audit support"
+    integrationPoint: "Trivy scans run against their policy definitions; prod promotions require their sign-off."
+    engagementProcess: "Direct — security team has open office hours Thursdays."
+    theirCycle: "1-week review cycle for standard requests"
+    frontDoor: "https://security.internal/request"
+    spaceLink: "#security-pe"
+    isCustomer: false
+    affects_capabilities:
+      - capability_id: base-images
+        how: "Defines CVE blocking thresholds for base images"
+      - capability_id: env-provisioning
+        how: "Reviews production environment security posture"
+    sor_ref:
+      system: external
+      url: "https://security.internal"
+      id: null
+      label: "Security portal"
+
+  - id: cloud-ops
+    name: "Cloud Operations"
+    area: "Cloud Infrastructure"
+    desc: "Manages AWS account vending, cost allocation tags, and cloud-level IAM policies. PE builds on top of their account structure for all customer environments."
+    whatWeConsume:
+      - "AWS account provisioning"
+      - "Cost allocation tag standards"
+      - "Cloud IAM boundary policies"
+    integrationPoint: "Account vending machine API consumed by our Terraform; cost tags propagated through our resource modules."
+    engagementProcess: "PE-mediated — requests via shared Jira board."
+    theirCycle: "3-5 day turnaround for new accounts"
+    frontDoor: "https://cloudops.internal"
+    spaceLink: "#cloudops-pe"
+    isCustomer: false
+    affects_capabilities:
+      - capability_id: env-provisioning
+        how: "Provides AWS accounts that environments are provisioned into"
+      - capability_id: compute
+        how: "IAM boundary policies affect cluster service accounts"
+    sor_ref:
+      system: external
+      url: "https://cloudops.internal"
+      id: null
+      label: "Cloud Ops portal"
+
+  - id: db-sre
+    name: "Database SRE Team"
+    area: "Data Infrastructure"
+    desc: "Manages RDS, Aurora, and Redis clusters. They are both a partner (we depend on their database provisioning) and a customer (they use our EKS clusters for their tooling)."
+    whatWeConsume:
+      - "RDS instance provisioning"
+      - "Aurora cluster management"
+      - "Redis/ElastiCache instances"
+    integrationPoint: "Their Terraform modules referenced in our environment blueprints; their tooling runs on our compute plane."
+    engagementProcess: "Direct — strong working relationship, shared standup Wednesdays."
+    theirCycle: "1-week for standard, 48h for incident-driven"
+    frontDoor: "https://dbsre.internal"
+    spaceLink: "#db-sre-pe"
+    isCustomer: true
+    affects_capabilities:
+      - capability_id: env-provisioning
+        how: "Database provisioning is part of full environment delivery"
+    sor_ref:
+      system: external
+      url: "https://dbsre.internal"
+      id: null
+      label: "DB SRE portal"

@@ -1,0 +1,103 @@
+team_name: "Platform Engineering"
+team_type: platform_engineering  # platform_engineering | product | data | security
+company: "Meridian Corp"
+
+current_quarter: "Q1 2026"
+sprint:
+  cadence: 2-week
+  start_day: Wednesday
+  current_sprint: "Sprint 8"
+  idp_cycle_week: 4
+  idp_cycle_total: 6
+
+# Vocabulary overrides — any team can rename these
+vocabulary:
+  consumers: "Customers"     # or Users, Clients, Tenants
+  planes: "Planes"           # or Domains, Squads, Areas
+  intake: "Intake"           # or Requests, Tickets
+  rotation: "Support Rotation"  # or On-call, Office Hours
+
+# Relationship types
+relationships:
+  consumers:
+    label: "Customers"
+    enabled: true
+  stakeholders:
+    label: "Stakeholders"
+    enabled: true
+  partners:
+    label: "Partners"
+    enabled: true
+
+# JIRA config (single project, custom fields)
+jira:
+  project_key: PLAT
+  base_url: "https://jira.internal"
+  custom_fields:
+    customer: "customfield_10001"
+    plane:    "customfield_10002"
+    track:    "customfield_10003"
+    work_type: "customfield_10004"
+
+# Voting system
+voting:
+  system: jira  # jira | jira-product-discovery
+  jira_issue_type: "Platform Proposal"
+  project_key: PLAT
+
+# Stats bar (opt-in)
+stats:
+  enabled: true
+  source: manual  # manual | thanos | prometheus
+  thanos_url: null  # set when source: thanos
+  # token via env: THANOS_TOKEN
+  items:
+    - id: pipeline_runs
+      label: "pipeline runs/day"
+      prefix: "~"
+      value: 280
+      celebrate: false
+    - id: app_builds
+      label: "app builds/day"
+      prefix: "~"
+      value: 72
+      celebrate: false
+    - id: success_rate
+      label: "pipeline success"
+      suffix: "%"
+      value: 94
+      celebrate: false
+    - id: eks_clusters
+      label: "EKS clusters"
+      value: 8
+      celebrate: false
+    - id: workloads
+      label: "workloads running"
+      value: 680
+      celebrate: false
+    - id: environments
+      label: "environments"
+      value: 28
+      celebrate: false
+    - id: zero_cve_images
+      label: "zero-CVE images"
+      value: 16
+      celebrate: false
+    - id: critical_cves
+      label: "critical CVEs"
+      value: 0
+      celebrate: true  # green pulse when 0
+
+# Deployment
+deployment:
+  internal_url: null  # "https://waypoint.internal.yourcompany.com"
+
+# Notifications (opt-in)
+notifications:
+  enabled: false
+  provider: null  # teams | webex | slack
+  webhook_url: null  # TODO: add webhook URL
+  triggers:
+    lifecycle_deadline_days: 30
+    scope_creep_threshold: 3
+    support_rotation_reminder: true

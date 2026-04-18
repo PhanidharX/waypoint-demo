@@ -1,0 +1,44 @@
+team:
+  - id: sofia-reyes
+    name: "Sofia Reyes"
+    role: "Platform Engineer"
+    primaryPlane: compute
+    secondaryPlane: app-cicd
+    hat: "Tech Lead"
+    onSupportToday: true
+    projects: [1, 4]
+    bandwidth: null
+    profile_link:
+      system: external
+      url: "https://directory.internal/sofia-reyes"
+      id: null
+      label: "View profile"
+
+  - id: marcus-chen
+    name: "Marcus Chen"
+    role: "Platform Engineer"
+    primaryPlane: infra-cicd
+    hat: "Environments SME"
+    onSupportToday: false
+    projects: [2, 3]
+    bandwidth: null
+    profile_link:
+      system: external
+      url: "https://directory.internal/marcus-chen"
+      id: null
+      label: "View profile"
+
+  - id: priya-kapoor
+    name: "Priya Kapoor"
+    role: "Senior Platform Engineer"
+    primaryPlane: app-cicd
+    secondaryPlane: compute
+    hat: "Base Images Owner"
+    onSupportToday: false
+    projects: [1, 5]
+    bandwidth: null
+    profile_link:
+      system: external
+      url: "https://directory.internal/priya-kapoor"
+      id: null
+      label: "View profile"

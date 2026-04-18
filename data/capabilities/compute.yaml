@@ -1,0 +1,77 @@
+# Extended detail for Compute Platform
+sections:
+  - title: "Architecture"
+    content: "Meridian Corp runs dedicated EKS clusters per customer — no multi-tenancy across customer boundaries. Each cluster runs Kubernetes 1.30 with Istio service mesh, Karpenter for node autoscaling, and AWS Load Balancer Controller for ingress. Clusters are provisioned via Terraform and managed by the compute plane."
+  - title: "Node Groups"
+    content: "Standard node groups use m6i.xlarge (4 vCPU, 16 GB) for general workloads and c6i.2xlarge (8 vCPU, 16 GB) for compute-intensive jobs. GPU nodes (g5.xlarge) are available on request for ML inference workloads. All nodes run Amazon Linux 2023 with hardened AMIs rebuilt weekly."
+  - title: "Scaling"
+    content: "Karpenter handles node autoscaling with provisioner configs per workload class. HPA is configured by default for all deployments. Cluster autoscaler is deprecated — migration to Karpenter completed Q4 2025."
+
+clusters:
+  - name: "custA-prod-eks"
+    customer: "Customer A"
+    version: "1.30"
+    region: us-east-1
+    node_count: 24
+    workloads: 186
+    status: healthy
+    upgrade_status: current
+  - name: "custA-staging-eks"
+    customer: "Customer A"
+    version: "1.30"
+    region: us-east-1
+    node_count: 8
+    workloads: 92
+    status: healthy
+    upgrade_status: current
+  - name: "custB-prod-eks"
+    customer: "Customer B"
+    version: "1.30"
+    region: us-west-2
+    node_count: 18
+    workloads: 142
+    status: healthy
+    upgrade_status: current
+  - name: "custB-staging-eks"
+    customer: "Customer B"
+    version: "1.30"
+    region: us-west-2
+    node_count: 6
+    workloads: 68
+    status: healthy
+    upgrade_status: current
+  - name: "custC-dev-eks"
+    customer: "Customer C"
+    version: "1.30"
+    region: us-east-1
+    node_count: 4
+    workloads: 34
+    status: healthy
+    upgrade_status: current
+  - name: "custC-staging-eks"
+    customer: "Customer C"
+    version: "1.30"
+    region: us-east-1
+    node_count: 3
+    workloads: 22
+    status: healthy
+    upgrade_status: current
+  - name: "internal-prod-eks"
+    customer: "Internal"
+    version: "1.30"
+    region: us-east-1
+    node_count: 12
+    workloads: 96
+    status: healthy
+    upgrade_status: current
+  - name: "internal-staging-eks"
+    customer: "Internal"
+    version: "1.30"
+    region: us-east-1
+    node_count: 4
+    workloads: 40
+    status: healthy
+    upgrade_status: current
+
+total_workloads: 680
+total_nodes: 79
